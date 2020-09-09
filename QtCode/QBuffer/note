@@ -1,0 +1,68 @@
+绘图
+
+在窗口中绘图，重写绘图事件，虚函数
+void paintEvent(){
+    QPainter p(this);//创建画家，在窗口上绘图
+    p.drawxxx();
+
+    p.drawPixmap(0,0,width(),height(),QPixmap());
+    p.drawImage();//QImage
+    p.drawPicture();//QPicture
+    p.drawLine();
+
+    p.drawPixmap();//QBitmap黑白，光标
+}
+
+update();//间接调用paintEvent()
+
+
+绘图设备
+QPixmap:
+QImage:
+QPicture:
+
+QPixmap -> QImage
+QPixmap a;
+A.toImage();
+
+QImage -> QPixmap
+QImage b;
+QImage::fromImage(b);
+
+QPainter p;
+QPicture pic;
+p.begin(&pic);//指定绘图设备
+//绘图动作
+
+p.end();
+
+QPicture tmp;
+tmp.load("demo.aa");
+
+tmp.save();
+
+不规则窗口
+1.给窗口化一张背景图
+2.去边框
+3.设定属性（背景透明）
+4.移动坐标相对于屏幕而言
+
+文件操作
+QFile f;
+f.setFileName();
+f.open();
+f.write();
+f.read();
+
+f.close();
+
+
+QFileInfo info;
+info.size();
+info.fileName();
+
+QDataStream:二进制
+
+QTextStream:文本操作（指定编码）
+
+QBuffer:内存文件（内容放在文件中）
